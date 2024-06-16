@@ -1,0 +1,4 @@
+.hidden-div{
+    visibility: hidden;
+    display: block;
+}

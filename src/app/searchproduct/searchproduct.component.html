@@ -1,0 +1,57 @@
+<div class="w3l_banner_nav_right">
+                
+    <div class="w3ls_w3l_banner_nav_right_grid">
+        <div class="w3ls_w3l_banner_nav_right_grid1">
+            <h6>food</h6>
+
+            <div *ngIf="isLoading">
+                Loading...
+            </div>
+
+           
+            <div class="row">
+                <p *ngIf="msg == 'Cart Item Added Successfully'" class="alert alert-success">{{msg}}</p>
+                <p *ngIf="msg == 'Something Went Wrong!'" class="alert alert-danger">{{msg}}</p>
+
+            </div>
+           
+
+            <ng-container class="mt-3" *ngIf="!isLoading">
+                <div>
+                    {{errormsg}}
+                </div>
+            <div class="col-md-3 w3ls_w3l_banner_left" *ngFor="let prod of searchedProduct">
+                <div class="hover14 column">
+                <div class="agile_top_brand_left_grid w3l_agile_top_brand_left_grid">
+                    <div class="agile_top_brand_left_grid_pos">
+                        <img src="assets/images/offer.png" alt=" " class="img-responsive" />
+                    </div>
+                    <div class="agile_top_brand_left_grid1">
+                        <figure>
+                            <div class="snipcart-item block">
+                                <div class="snipcart-thumb">
+                                    <a [routerLink]="['/viewproduct', prod._id]">
+                                        <img src="assets/images/{{prod.pdtImgPath}}" alt=" " class="img-responsive" /></a>
+                                    <p>{{prod.pdtName}}</p>
+                                    <h4>{{prod.pdtPrice | currency:'INR'}}</h4>
+                                </div>
+                                <div class="snipcart-details">
+                        
+                                            <input type="button" name="submit" value="Add to cart" class="button"
+                                            (click)="addToCart(prod._id, prod.pdtPrice)" />
+                                       
+                                </div>
+                            </div>
+                        </figure>
+                    </div>
+                </div>
+                </div>
+            </div>
+            </ng-container>
+
+            
+            <div class="clearfix"> </div>
+        </div>
+        
+    </div>
+</div>

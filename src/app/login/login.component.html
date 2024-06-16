@@ -1,0 +1,100 @@
+<div class="w3l_banner_nav_right">
+    <!-- login -->
+            <div class="w3_login">
+                <h3>Sign In & Sign Up</h3>
+                <div class="w3_login_module">
+                    <div class="module form-module">
+                      <div class="toggle"><i class="fa fa-times fa-pencil"></i>
+                        <div class="tooltip">Click Me</div>
+                      </div>
+                      <div class="form">
+                        <h2>Login to your account</h2>
+                        <p *ngIf="msg">
+                          {{msg}}
+                        </p> <br>
+                        <form [formGroup]="loginForm" (ngSubmit)="doLogin()">
+                          UserName:<input type="text" name="Username" placeholder="Enter Username"
+                          formControlName="Username" required autocomplete="off">
+                        
+
+                          <p class="alert alert-danger" *ngIf="userNameCtrl.touched && userNameCtrl.errors?.['required']">
+                            Please Enter UserName
+                          </p>
+
+                          <p class="alert alert-danger" *ngIf="userNameCtrl.touched && userNameCtrl.errors?.['minlength']">
+                            Please Enter Minimum 5 Characters
+                          </p>
+                          Password:<input type="password" name="Password" placeholder="Enter Password"
+                          formControlName="Password" autocomplete="off">
+
+                          <p class="alert alert-danger" *ngIf="userPasswordCtrl.touched && userPasswordCtrl.errors?.['required']">
+                            Please Enter Password
+                          </p>
+                          
+                          <p class="alert alert-danger" *ngIf="userPasswordCtrl.touched && userPasswordCtrl.errors?.['pattern']">
+                            Please should be 8-16 characters long, at least one Special Characters, Numbers.
+                          </p>
+
+                          <input type="submit" [disabled]="loginForm.invalid" value="Login">
+                        </form>
+                      </div>
+                      <div class="form">
+                        <h2>Create an account</h2>
+                        <p *ngIf="msg">
+                          {{msg}}
+                        </p> <br>
+                        <form (ngSubmit)="doRegistration(f)" #f="ngForm">
+                         UserName: <input type="text" name="Username" placeholder="Enter Username"
+                          #userName="ngModel" minlength="5" required ngModel autocomplete="off">
+                  
+                          <p class="alert alert-danger" *ngIf="userName.touched && userName.errors?.['required']">
+                            please enter UserName
+                          </p> 
+
+                          <p class="alert alert-danger" *ngIf="userName.touched && userName.errors?.['minlength']">
+                            please enter minimum 5 character
+                          </p>
+
+                         Password: <input type="password" name="Password" placeholder="Enter Password" autocomplete="off"
+                          #userPassword="ngModel" required ngModel pattern="((?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,30})">
+
+                          <p class="alert alert-danger" *ngIf="userPassword.touched && userPassword.errors?.['required']">
+                            please Enter Password
+                          </p>
+
+                          <p class="alert alert-danger" *ngIf="userPassword.touched && userPassword.errors?.['pattern']">
+                            Please should be 8-16 characters long, at least one Special Characters, Numbers.
+                          </p>
+        
+
+                         Email: <input type="email" name="Email" placeholder="Enter Email Address"
+                          #userEmail="ngModel" email required ngModel autocomplete="off">
+
+                          <p class="alert alert-danger" *ngIf="userEmail.touched && userEmail.errors?.['required']">
+                            Please Enter Email
+                          </p>
+
+                          <p class="alert alert-danger" *ngIf="userEmail.touched && userEmail.errors?.['email']">
+                            Please Enter Valid Email
+                          </p>
+
+                         Phone Number <input type="text" name="Phone" placeholder="Enter Phone Number"
+                          #userPhone="ngModel" required ngModel pattern="[789][0-9]{9}" autocomplete="off">
+
+                          <p class="alert alert-danger" *ngIf="userPhone.touched && userPhone.errors?.['required']">
+                            Please Enter Phone Number
+                          </p>
+
+                          <p class="alert alert-danger" *ngIf="userPhone.touched && userPhone.errors?.['pattern']">
+                            please Enter 10 Numbers Only
+                          </p>
+
+                          <input type="submit" [disabled]="f.invalid" value="Register">
+                        </form>
+                      </div>
+                      <div class="cta"><a href="#">Forgot your password?</a></div>
+                    </div>
+                </div>
+            </div>
+    <!-- //login -->
+            </div>
